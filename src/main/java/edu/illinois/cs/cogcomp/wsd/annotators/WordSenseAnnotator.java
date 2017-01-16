@@ -94,12 +94,13 @@ public class WordSenseAnnotator extends Annotator {
         Map<String, Integer> toId = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader
                 (filename))) {
+            System.out.print("Reading embeddings from " + filename + "...  ");
             String line;
             int counter = 0;
             while ((line = br.readLine()) != null) {
                 if (counter % 10000 == 0) {
-                    System.out.printf("Reading %s, progress %d \n", filename,
-                            counter);
+//                    System.out.printf("Reading %s, progress %d \n", filename,
+//                            counter);
                 }
                 String trimedLine = line.trim();
                 if (trimedLine.isEmpty()) {
@@ -108,7 +109,7 @@ public class WordSenseAnnotator extends Annotator {
 
                 String[] parts = trimedLine.split("\t");
                 if (parts.length != 2) {
-                    System.err.println(line);
+//                    System.err.println(line);
                     continue;
                 }
                 String entry = parts[0];
@@ -121,6 +122,7 @@ public class WordSenseAnnotator extends Annotator {
                 toId.put(entry, counter);
                 counter++;
             }
+            System.out.println("done");
         } catch (IOException e) {
             e.printStackTrace();
         }
