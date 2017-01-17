@@ -94,7 +94,7 @@ public class WordSenseAnnotator extends Annotator {
         Map<String, Integer> toId = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader
                 (filename))) {
-            System.out.print("Reading embeddings from " + filename + "...  ");
+            System.out.print("Reading embeddings from " + filename + " ...  ");
             String line;
             int counter = 0;
             while ((line = br.readLine()) != null) {
