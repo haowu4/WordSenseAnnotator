@@ -219,6 +219,7 @@ public class WordSenseAnnotator extends Annotator {
         double normOfSentence = Distance.norm(sentenceEmbedding);
         for (String s : senses) {
             DenseVector senseEmbedding = senseEmbeddings.getEmbeddingOrNull(s);
+            if (senseEmbedding == null) continue;
             double sim = Distance.cosine(sentenceEmbedding, senseEmbedding,
                     normOfSentence,
                     Distance.norm(senseEmbedding));
